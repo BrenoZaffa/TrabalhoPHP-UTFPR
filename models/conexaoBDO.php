@@ -1,4 +1,6 @@
 <?php
+
+    session_start();
     $localHost = "localhost";
     $user = "root";
     $pass = "";
@@ -16,4 +18,3 @@
 
     
 
-?>

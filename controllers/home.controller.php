@@ -32,7 +32,7 @@
             $senha = $_POST['senhaCadastro'];
         }
         if($correto==0){
-            
+            $usuario->cadastrar($email,$senha,$nome);
             $correto=0;
         }
     }
@@ -50,7 +50,14 @@
             $senhaLogin = $_POST['passwordLogin'];
         }
         if($correto==0){
-            $usuario->logar($emailLogin,$senhaLogin);
+            if($usuario->logar($emailLogin,$senhaLogin) == true){
+                if(isset($_SESSION['email']))
+                    header('Location: ');
+                else
+                    header('Location: home.controller.php');
+            }else{
+                header('Location: home.controller.php');
+            }
             $correto=0;
         }
         
@@ -59,3 +66,4 @@
     require 'views/header.php';
     require 'views/home.php';
     require 'views/footer.php';
+?>

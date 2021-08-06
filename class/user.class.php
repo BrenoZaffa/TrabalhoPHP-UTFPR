@@ -27,4 +27,9 @@
             $sql->bindValue("nome",$nome);
             $sql->execute();
         }
+
+        public function deslogar(){
+            unset($_SESSION['email']);
+            header('Location: /home');
+        }
     }

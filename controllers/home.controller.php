@@ -1,14 +1,18 @@
 <?php
-    require 'models/conexaoBDO.php';
-    require 'class/user.class.php';
+if(isset($_SESSION['email']))
+    header('Location: /myReceitas');
 
-    $usuario = new user();
-    $correto=0;
-    $email = $nome = $senha = $senhaLogin = $emailLogin = '';
-    $errorLogin = array('email'=>'', 'senha'=>'', 'login'=>'');
-    $errorCadastro = array('email'=>'', 'senha'=>'', 'nome'=>'');
+class HomeController{
+    
 
-    if(isset($_POST['cadastro'])){
+    public function cadastrar(){
+        require './models/conexaoBDO.php';
+        
+        $usuario = new user();
+        $correto=0;
+        $email = $nome = $senha = $senhaLogin = $emailLogin ='';
+        $errorCadastro = array('email'=>'', 'senha'=>'', 'nome'=>'');
+        $errorLogin = array('email'=>'', 'senha'=>'', 'login'=>'');
         if(empty($_POST['emailCadastro'])){
             $errorCadastro['email'] = 'insira um email!';
             $correto=1;
@@ -30,40 +34,65 @@
             $correto=1;
         } else {
             $senha = $_POST['senhaCadastro'];
-        }
+        } 
         if($correto==0){
+            $email = $senha = $nome = $senhaLogin = $emailLogin = '';
+            $errorCadastro = array('email'=>'', 'senha'=>'', 'nome'=>'');
             $usuario->cadastrar($email,$senha,$nome);
             $correto=0;
         }
-    }
-    if(isset($_POST['entrar'])){
-        if(empty($_POST['emailLogin'])){
-            $errorLogin['email'] = 'insira um email!';
-            $correto=1;
-        } else{
-            $emailLogin= $_POST['emailLogin'];
-        }
-        if(empty($_POST['passwordLogin'])){
-            $errorLogin['senha'] = 'insira uma senha!';
-            $correto=1;
-        } else {
-            $senhaLogin = $_POST['passwordLogin'];
-        }
-        if($correto==0){
-            if($usuario->logar($emailLogin,$senhaLogin) == true){
-                if(isset($_SESSION['email']))
-                    header('Location: ');
-                else
-                    header('Location: home.controller.php');
-            }else{
-                header('Location: home.controller.php');
-            }
-            $correto=0;
-        }
         
+        require './views/home.php';
     }
 
-    require 'views/header.php';
-    require 'views/home.php';
-    require 'views/footer.php';
-?>
+    public function logar(){
+        require './models/conexaoBDO.php';
+        $usuario = new user();
+        $correto=0;
+        $email = $nome = $senha = $senhaLogin = $emailLogin = '';
+        $errorLogin = array('email'=>'', 'senha'=>'', 'login'=>'');
+        $errorCadastro = array('email'=>'', 'senha'=>'', 'nome'=>'');
+        if(isset($_POST['entrar'])){
+            if(empty($_POST['emailLogin'])){
+                $errorLogin['email'] = 'insira um email!';
+                $correto=1;
+            } else{
+                $emailLogin= $_POST['emailLogin'];
+            }
+            if(empty($_POST['passwordLogin'])){
+                $errorLogin['senha'] = 'insira uma senha!';
+                $correto=1;
+            } else {
+                $senhaLogin = $_POST['passwordLogin'];
+            }
+            if($correto==0){
+                if($usuario->logar($emailLogin,$senhaLogin) == true){
+                    if(isset($_SESSION['email'])){
+                        $email = $senha = $nome = $senhaLogin = $emailLogin = '';
+                        $errorCadastro = array('email'=>'', 'senha'=>'', 'nome'=>'');
+                        header('Location: /myReceitas');
+                    } 
+                    else
+                        require './views/home.php';
+                }else{
+                    require './views/home.php';
+                }
+                $correto=0;
+            }
+            
+        }
+    }
+    
+    public function index(){
+        require './models/conexaoBDO.php';
+        $email = $nome = $senha = $senhaLogin = $emailLogin = '';
+        $errorLogin = array('email'=>'', 'senha'=>'', 'login'=>'');
+        $errorCadastro = array('email'=>'', 'senha'=>'', 'nome'=>'');
+        if(isset($_SESSION['email']))
+            header('Location: /myReceitas');
+        else
+            require './views/home.php';
+        
+    }
+}
+    

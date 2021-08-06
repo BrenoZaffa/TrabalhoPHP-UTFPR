@@ -1,0 +1,16 @@
+{
+    "name": "breno/aulas",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "BrenoZaffa",
+            "email": "brenozaffa01@gmail.com"
+        }
+    ],
+    "autoload":{
+        "classmap": ["./"]
+    },
+    "require": {
+        "pecee/simple-router": "4.3.7.2"
+    }
+}

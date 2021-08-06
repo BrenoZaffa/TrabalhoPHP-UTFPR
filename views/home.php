@@ -1,4 +1,4 @@
-
+<?php require 'header.php' ?>
 <section style="margin-left: 80px; margin-right:80px;">
         <h1><strong>MyRecipe</strong></h1>
         <p class="center">Esqueça os papéis, isso é coisa do passado</p>
@@ -22,7 +22,7 @@
                                 <label for="password">Senha</label>
                             </div>
                             <div class="red-text"><?php echo $errorLogin['senha']; ?></div>
-                            <button class="btn waves-effect waves-light" type="submit" name="entrar">Entrar</button>
+                            <a href="/home/logar" class="btn waves-effect waves-light" type="submit" name="entrar">Entrar</a>
                             <div class="red-text"><?php echo $errorLogin['login']; ?></div>
                         </form>
                     </div>
@@ -46,7 +46,7 @@
                                 <label for="password">Senha</label>
                             </div>
                             <div class="red-text"><?php echo $errorCadastro['senha']; ?></div>
-                            <button class="btn waves-effect waves-light" type="submit" name="cadastro">Concluir Cadastro</button>
+                            <a href="/home/cadastrar" class="btn waves-effect waves-light" type="submit" name="cadastro">Concluir Cadastro</a>
                         
                         </form>
                     </div>
@@ -54,10 +54,11 @@
             </div>
         </div>
     </section>
-
     <section style="margin-left: 80px; margin-right:80px;">
         <h1 class="center"><strong>Como usar?</strong></h1>
         <h3><strong>1º Passo:</strong> Concluir seu cadastro.</h3>
         <h3><strong>2º Passo:</strong> Fazer seu login.</h3>
         <h3><strong>3º Passo:</strong> Pressionar o botão '+' no topo da página para adicionar uma nova receita.</h3>
     </section>
+    
+<?php require 'footer.php' ?>

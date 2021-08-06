@@ -15,9 +15,12 @@
         <header>
             <nav>
                 <div class="nav-wrapper blue lighten-1">
-                    <a href="/" class="brand-logo center">MyRecipes</a>
+                    <a href="/home" class="brand-logo center">MyRecipes</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/myReceitas">Minhas Receitas</a></li>
+                        <li><a href="/myReceitas/deslogar">Sair</a></li>
+                    </ul>
                 </div>
             </nav>
         </header>
-    
-        

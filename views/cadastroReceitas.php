@@ -2,7 +2,7 @@
     <?php require('./views/headerLogado.php') ?>
     <section style="margin-left: 80px; margin-right:80px; margin-bottom:80px;">
         <h1>Insira os dados da receita:</h1>
-        <form action="post">
+        <form method="post" action="/myReceitas/enviar">
             <div>
                 <div class="input-field">
                     <input id="Nome" type="text" class="validate">

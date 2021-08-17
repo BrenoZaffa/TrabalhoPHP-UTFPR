@@ -36,9 +36,9 @@ class HomeController{
             $senha = $_POST['senhaCadastro'];
         } 
         if($correto==0){
+            $usuario->cadastrar($email,$senha,$nome);
             $email = $senha = $nome = $senhaLogin = $emailLogin = '';
             $errorCadastro = array('email'=>'', 'senha'=>'', 'nome'=>'');
-            $usuario->cadastrar($email,$senha,$nome);
             $correto=0;
         }
         

@@ -11,7 +11,7 @@
                 <div class="col s6">
                     <h4><strong>Login:</strong></h4>
                     <div>
-                        <form method="POST">
+                        <form method="POST" action="/home/logar">
                             <div class="input-field col s12">
                                 <input id="emailLogin" type="email" class="validate" name="emailLogin" value="<?php echo htmlspecialchars($emailLogin) ; ?>">
                                 <label for="email">Email</label>
@@ -22,7 +22,7 @@
                                 <label for="password">Senha</label>
                             </div>
                             <div class="red-text"><?php echo $errorLogin['senha']; ?></div>
-                            <a href="/home/logar" class="btn waves-effect waves-light" type="submit" name="entrar">Entrar</a>
+                            <button class="btn waves-effect waves-light" type="submit" name="entrar">Entrar</button>
                             <div class="red-text"><?php echo $errorLogin['login']; ?></div>
                         </form>
                     </div>
@@ -30,7 +30,7 @@
                 <div class="col s6">
                     <h4><strong>Cadastro:</strong></h4>
                     <div>
-                        <form method="POST">
+                        <form method="POST" action="/home/cadastrar">
                             <div class="input-field col s12">
                                 <input id="nomeCadastro" type="text" class="validate" name="nomeCadastro" value="<?php echo htmlspecialchars($nome) ; ?>">
                                 <label for="last_name">Nome Completo</label>
@@ -46,7 +46,7 @@
                                 <label for="password">Senha</label>
                             </div>
                             <div class="red-text"><?php echo $errorCadastro['senha']; ?></div>
-                            <a href="/home/cadastrar" class="btn waves-effect waves-light" type="submit" name="cadastro">Concluir Cadastro</a>
+                            <button class="btn waves-effect waves-light" type="submit" name="cadastro">Concluir Cadastro</button>
                         
                         </form>
                     </div>
